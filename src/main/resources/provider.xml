@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+    http://code.alibabatech.com/schema/dubbo
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="java-front-provider" />
+
+    <!-- 连接注册中心 -->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" />
+
+    <!-- 生产者9999在端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="9999" />
+
+    <!-- Bean -->
+    <bean id="helloService" class="com.java.front.dubbo.demo.provider.HelloServiceImpl" />
+
+    <!-- 暴露服务 -->
+    <dubbo:service interface="com.java.front.dubbo.demo.provider.HelloService" ref="helloService" />
+</beans>
