@@ -11,5 +11,7 @@ public class HelloServiceImpl implements HelloService {
     public String sayHelloGeneric(Person person, String message) throws Exception {
         String result = "hello[" + person + "],message=" + message;
         return result;
+
+        /////
     }
 }
